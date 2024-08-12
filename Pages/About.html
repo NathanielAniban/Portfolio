@@ -10,24 +10,6 @@
     integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>  </head>
     <script src="https://kit.fontawesome.com/fe5818cd00.js" crossorigin="anonymous"></script>
 </head>
-<style>
-    li, a{
-        color: black;
-        text-decoration: none;
-        font-size: 1.2rem;
-        list-style-type: none;
-    }
-    a:hover{
-        color: rgb(77, 77, 77);
-        text-decoration: underline;
-        font-weight: bold;
-    }
-    a:active{
-        color: rgb(0, 0, 0);
-        text-decoration: underline;
-        font-weight: bold;
-    }
-</style>
 <body>
     <nav class="navbar navbar-expand-lg navbar-light bg-light sticky-top">
         <div class="container">
@@ -103,8 +85,8 @@
                         <div class="col-md-4">
                             <div class="d-flex align-items-center mb-3">
                                 <i class="bi bi-camera" style="font-size: 2rem; color: #007bff;"></i>
-                                <div class="ms-3">
-                                    <h5>Workout</h5>
+                                <div class="ms-3 p-2 shadow">
+                                    <h5 class="text-center"><i class="fa-solid fa-dumbbell"></i> Workout</h5>
                                     <p>
                                         Building your body is equally important on building websites and programs
                                     </p>
@@ -115,7 +97,7 @@
                             <div class="d-flex align-items-center mb-3">
                                 <i class="bi bi-book" style="font-size: 2rem; color: #007bff;"></i>
                                 <div class="ms-3">
-                                    <h5>Reading</h5>
+                                    <h5 class="text-center"><i class="fa-solid fa-book-open"></i> Reading</h5>
                                     <p>I enjoy diving into novels and learning new concepts through books.</p>
                                 </div>
                             </div>
@@ -124,33 +106,34 @@
                             <div class="d-flex align-items-center mb-3">
                                 <i class="bi bi-music-note" style="font-size: 2rem; color: #007bff;"></i>
                                 <div class="ms-3">
-                                    <h5>Music</h5>
+                                    <h5 class="text-center"><i class="fa-solid fa-music"></i> Music</h5>
                                     <p>Listening to and creating music helps me relax and stay inspired.</p>
                                 </div>
                             </div>
                         </div>
                     </div>
+                    <a class="mb-4 btn btn-light border border-dark w-100" href="#Certificate">Certificates and Badges</a>
                 </div>
             </div>
         </div>
-        <ul class="row mt-3">
-            <div class="display-5 mb-3 mt-5">Certificates and Badges</div>
+        <ul class="row mt-5 mb-4 list-unstyled">
+            <div class="display-5 mb-3 mt-5 text-center" id="Certificate">Certificates and Badges</div>
             <div class="col-md-6">
-                <li><a href="https://www.credly.com/users/nathaniel-aniban/badges" target="_blank">Badges of Completion</a></li>
-                <li><a href="../Certificates/NathanielAniban-AMAES - Free Jav-certificate.pdf" target="_blank">Completion of Partner: JavaScript Essentials 1 (JSE)</a></li>
-                <li><a href="../Certificates/NathanielAniban-AMAES - Free Pyt-certificate.pdf" target="_blank">Completion of Partner: PCAP - Programming Essentials in Python	</a></li>
-                <li><a href="../Certificates/NathanielAniban-UGRD-ITE6101A-21-certificate.pdf" target="_blank">Completion of Entrepreneurship</a></li>
-                <li><a href="../Certificates/NathanielAniban-UnderGrad-CPE635-certificate.pdf" target="_blank">Completion of Network Security	</a></li>
-                <li><a href="../Certificates/NathanielAniban-UnderGrad-CS6301-certificate.pdf" target="_blank">Completion of Emerging Technologies Workshop - Model Driven Programmability</a></li>
-                <li><a href="../Certificates/NathanielAniban-UnderGrad-IT6200-certificate.pdf" target="_blank">Completion of CCNAv7: Introduction to Networks</a></li>
+                <li><a href="https://www.credly.com/users/nathaniel-aniban/badges" target="_blank" class="btn btn-light text-decoration-none text-dark border shadow-sm mb-3 d-flex text-start w-100">Badges of Completion (Direct to Credly)</a></li>
+                <li><a href="../Certificates/NathanielAniban-AMAES - Free Jav-certificate.pdf" target="_blank" class="btn btn-light text-decoration-none text-dark border shadow-sm mb-3 d-flex text-start w-100">Completion of Partner: JavaScript Essentials 1 (JSE)</a></li>
+                <li><a href="../Certificates/NathanielAniban-AMAES - Free Pyt-certificate.pdf" target="_blank" class="btn btn-light text-decoration-none text-dark border shadow-sm mb-3 d-flex text-start w-100">Completion of Partner: PCAP - Programming Essentials in Python	</a></li>
+                <li><a href="../Certificates/NathanielAniban-UGRD-ITE6101A-21-certificate.pdf" target="_blank" class="btn btn-light text-decoration-none text-dark border shadow-sm mb-3 d-flex text-start w-100">Completion of Entrepreneurship</a></li>
+                <li><a href="../Certificates/NathanielAniban-UnderGrad-CPE635-certificate.pdf" target="_blank" class="btn btn-light text-decoration-none text-dark border shadow-sm mb-3 d-flex text-start w-100">Completion of Network Security	</a></li>
+                <li><a href="../Certificates/NathanielAniban-UnderGrad-CS6301-certificate.pdf" target="_blank" class="btn btn-light text-decoration-none text-dark border shadow-sm mb-3 d-flex text-start w-100">Completion of Emerging Technologies Workshop - Model Driven Programmability</a></li>
+                <li><a href="../Certificates/NathanielAniban-UnderGrad-IT6200-certificate.pdf" target="_blank" class="btn btn-light text-decoration-none text-dark border shadow-sm mb-3 d-flex text-start w-100">Completion of CCNAv7: Introduction to Networks</a></li>
             </div>
             <div class="col-md-6">
-                <li><a href="../Certificates/NathanielAniban-UnderGrad-IT6201-certificate.pdf" target="_blank">Completion of CCNAv7: Switching, Routing, and Wireless Essentials</a></li>
-                <li><a href="../Certificates/NathanielAniban-UnderGrad-IT6300-certificate (1).pdf" target="_blank">Completion of CCNAv7: Enterprise Networking, Security, and Automation</a></li>
-                <li><a href="../Certificates/NathanielAniban-UnderGrad-IT6301-certificate (2).pdf" target="_blank">Completion of Cybersecurity Essentials	</a></li>
-                <li><a href="../Certificates/NathanielAniban-UnderGrad-IT6304-certificate (1).pdf" target="_blank">Completion of DevNet Associate	</a></li>
-                <li><a href="../Certificates/NathanielAniban-UnderGrad-ITE620-certificate (1).pdf" target="_blank">Completion of Partner: CPA - Programming Essentials in C++</a></li>
-                <li><a href="../Certificates/NathanielAniban-UnderGrad-ITE620-certificate.pdf" target="_blank">Completion of Partner: CPP - Advanced Programming in C++</a></li>
+                <li><a href="../Certificates/NathanielAniban-UnderGrad-IT6201-certificate.pdf" target="_blank" class="btn btn-light text-decoration-none text-dark border shadow-sm mb-3 d-flex text-start w-100">Completion of CCNAv7: Switching, Routing, and Wireless Essentials</a></li>
+                <li><a href="../Certificates/NathanielAniban-UnderGrad-IT6300-certificate (1).pdf" target="_blank" class="btn btn-light text-decoration-none text-dark border shadow-sm mb-3 d-flex text-start w-100">Completion of CCNAv7: Enterprise Networking, Security, and Automation</a></li>
+                <li><a href="../Certificates/NathanielAniban-UnderGrad-IT6301-certificate (2).pdf" target="_blank" class="btn btn-light text-decoration-none text-dark border shadow-sm mb-3 d-flex text-start w-100">Completion of Cybersecurity Essentials	</a></li>
+                <li><a href="../Certificates/NathanielAniban-UnderGrad-IT6304-certificate (1).pdf" target="_blank" class="btn btn-light text-decoration-none text-dark border shadow-sm mb-3 d-flex text-start w-100">Completion of DevNet Associate	</a></li>
+                <li><a href="../Certificates/NathanielAniban-UnderGrad-ITE620-certificate (1).pdf" target="_blank" class="btn btn-light text-decoration-none text-dark border shadow-sm mb-3 d-flex text-start w-100">Completion of Partner: CPA - Programming Essentials in C++</a></li>
+                <li><a href="../Certificates/NathanielAniban-UnderGrad-ITE620-certificate.pdf" target="_blank" class="btn btn-light text-decoration-none text-dark border shadow-sm mb-3 d-flex text-start w-100">Completion of Partner: CPP - Advanced Programming in C++</a></li>
             </div>
         </ul>
     </div>
