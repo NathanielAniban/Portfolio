@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tic-Tac-Toe Game</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH"
+      crossorigin="anonymous"
+    />
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
+      crossorigin="anonymous"
+    ></script>
+    <link rel="stylesheet" href="../Projects/styles/tic-tac-toe.css">
+</head>
+
+<body>
+    <div class="container row mt-5">
+        <div class="container text-center col-lg-6">
+            <h1>Tic Tac Toe</h1>
+            <div id="term" class="h5 mt-3 mb-3">Player 1: Your Term</div>
+            <div id="gameBoard" class="grid mx-auto justify-content-center">
+                <!-- Cells will be injected by jQuery -->
+            </div>
+            <div id="status" class="winner mt-3"></div>
+            <button id="resetButton" class="btn btn-primary mt-3">Reset Game</button>
+        </div>
+        <div class="container col-lg-6">
+            <table class="table table-striped table-bordered">
+                <thead>
+                    <tr>
+                        <th>Player</th>
+                        <th>Wins</th>
+                        <th>Lost</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Player 1</td>
+                        <td id="player-1-Wins"></td>
+                        <td id="player-1-Loss"></td>
+                    </tr>
+                    <tr>
+                        <td>Player 2</td>
+                        <td id="player-2-Wins"></td>
+                        <td id="player-2-Loss"></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</body>
+</html>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+<script src="../Projects/scripts/tic-tac-toe.js"></script>
