@@ -192,7 +192,7 @@ $(document).ready(function(){
     }
 
     $('#downloadBtn').click(function() {
-        html2canvas(document.getElementById('cardToDownload')).then(canvas => {
+        html2canvas(document.getElementById('cardToDownload'), { scale: 2 }).then(canvas => {
             // Create a link element
             var link = document.createElement('a');
             link.href = canvas.toDataURL('image/png');
@@ -208,5 +208,6 @@ $(document).ready(function(){
             document.body.removeChild(link);
         });
     });
+    
 
 });
