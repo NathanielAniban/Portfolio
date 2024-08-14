@@ -1,31 +1,7 @@
 $(document).ready(function(){
     var serviceCount = 0;
 
-    function ParseData(index){
-        $.getJSON('formData.json', function (data) {
-            console.log(data);
-            var data = data[index];
-            $('#editserviceName').val(data.ServiceName);
-            $('#editshortDescription').val(data.ShortDescription);
-            $('#editcost').val(data.Cost);
-            $('#editServiceType').val(data.ServiceType);
-
-
-            $.each(data.listOfDescription, function(keys, object){
-                var newItem = '<li class="mb-3 col-md-12">'+
-                    '<div class="input-group">'+
-                    '<input type="text" id="edit_serviceInput_'+keys+'" value="'+object+'" class="edit_service-input form-control col-md-8" disabled>'+
-                        '<div class="btn-group col-md-4" role="group" aria-label="group">'+
-                        '<button id="edit_editService_'+keys+'" class="edit_editService btn btn-secondary">Edit</button>'+
-                        '<button id="edit_removeService_'+keys+'" class="edit_removeService btn btn-danger">Remove</button>'+
-                        '</div>'+
-                    '</div>'+
-                '</li>'; // Create new list item with input and edit button
-                $('#editservice-list').append(newItem); // Append new item to the list
-            });
-        });
-    }
-    
+  
     $('input, textarea, select').focus(function(){
         $(this).removeClass('is-invalid');
     });
@@ -214,5 +190,23 @@ $(document).ready(function(){
         document.body.removeChild(a);
         URL.revokeObjectURL(url);
     }
+
+    $('#downloadBtn').click(function() {
+        html2canvas(document.getElementById('cardToDownload')).then(canvas => {
+            // Create a link element
+            var link = document.createElement('a');
+            link.href = canvas.toDataURL('image/png');
+            link.download = 'service-card-img.png';
+            
+            // Append link to the body
+            document.body.appendChild(link);
+            
+            // Trigger download
+            link.click();
+            
+            // Remove link from body
+            document.body.removeChild(link);
+        });
+    });
 
 });
