@@ -129,10 +129,9 @@ $(document).ready(function(){
     });
 
     function itterateList(){
-        var miniDescription = $('#service-list li div').children('input');
         var list = '';
-        $.each(miniDescription, function(keys, object){
-            var data = $('#serviceInput_'+(keys+1)).val();
+        $('#service-list li div input').each(function(){
+            var data = $('#'+$(this).attr('id')).val();
             list += '<li>'+data+'</li>';
         });
 
@@ -157,17 +156,15 @@ $(document).ready(function(){
         var Cost = $('#cost').val();
         var ShortDescription = $('#shortDescription').val();
         var ServiceType = $('#ServiceType').val();
-        const thisCondition = true;
-        var miniDescription = $('#service-list li div').children('input');
-
+        var thisCondition = true;
+        
         $('input, textarea, select').focus(function(){
             $(this).removeClass('is-invalid');
         });
-    
 
-        $.each(miniDescription, function(keys, object){
-            if($('#serviceInput_'+(keys+1)).val() == ""){
-                $('#serviceInput_'+(keys+1)).addClass('is-invalid');
+        $('#service-list li div input').each(function(){
+            if($('#'+$(this).attr('id')).val() == ""){
+                $('#'+$(this).attr('id')).addClass('is-invalid');
                 thisCondition =  false;
             }
         });
