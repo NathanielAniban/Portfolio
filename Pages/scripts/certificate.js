@@ -2,40 +2,18 @@ $(document).ready(function() {
     // Fetch the JSON file
     $.getJSON('../JSON/certificates.json', function(data) {
         // Iterate over the certificates array
-        var Selector = $('#Selector');
+        var Selector = $('#Selector').append(createOption(data.certificates));
         var list = $('#list-group');
-        var getlist = '';
-        var createNewList = '';
+        var uniqueType = getTypes(data.certificates);
 
-        $.each(data.certificates, function(index, certificate) {
-            // Append each certificate to the list
-
-            Selector.append(
-                `<option class="list-group-item border border-dark">
-                    ${certificate.name}
-                </option>`
-            );
-            
-
-            getlist +=
-            `<li class="list-group-item border btn btn-light border-secondary mb-1 mx-1" title="${certificate.name}" id="certificate_${index+1}" 
-            onclick="pdfViewer('${certificate.path}','${certificate.name}','#certificate_${index+1}');">
-                ${certificate.name}
-            </li>`;
-
-            if(index % 2){
-                createNewList +=     `<ul class="list-group list-group-horizontal">
-                                    ${getlist}
-                                    </ul>`;
-                getlist = '';
-            }
-            
-         
-            
-
-        });
-
-        list.append(createNewList);
+        for(let x = 0; x < uniqueType.length; x++){
+            list.append(`
+            <div class="h6 mb-2" id="${uniqueType[x]}"><u>${uniqueType[x]}<span class="text-danger">*</span></u></div>
+            <ul class="list-group list-group-horizontal-xxl flex-fill mb-2">
+            ${sortList(data.certificates, uniqueType[x])}
+            </ul>
+            `);
+        }
 
     }).fail(function(jqXHR, textStatus, errorThrown) {
         console.error('Error loading JSON data: ' + textStatus, errorThrown);
@@ -58,7 +36,6 @@ $(document).ready(function() {
     });
 
 });
-
 function pdfViewer(pdfName, certificateName, certificateID){        
             $('li').removeClass('active');
             $(certificateID).addClass('active');
@@ -76,7 +53,7 @@ function pdfViewer(pdfName, certificateName, certificateID){
                     const context = canvas.getContext('2d');
                     canvas.height = viewport.height;
                     canvas.width = viewport.width;
-                    canvas.className = 'card-img-top';
+                    canvas.className = 'card-img-top w-100';
 
                     // Append canvas to the viewer
                     
@@ -93,5 +70,43 @@ function pdfViewer(pdfName, certificateName, certificateID){
             }).catch(function(error) {
                 console.error('Error loading PDF:', error);
             });
+}
+function getTypes(data){
+    var tempData = [];
+    var uniquedata = [];
+    $.each(data, function(index, value){
+        tempData.push(value.focusOn);
+
+        if(!uniquedata.includes(tempData[index])){
+            uniquedata.push(value.focusOn);
+        }
+    });
+
+    return uniquedata;
+}
+function createOption(data){
+    var result = '';
+    $.each(data, function(index, certificate) {
+        // Append each certificate to the list
+        result +=
+            `<option class="list-group-item border border-dark">
+                ${certificate.name}
+            </option>`;
+        
+    });
+    return result;
+}
+function sortList(data, condition){
+    var result = '';
+    $.each(data, function(index, certificate){
+        if(certificate.focusOn == condition){
+            result += `<li class="list-group-item border btn btn-light border-secondary" title="${certificate.name}" id="certificate_${index+1}" 
+            onclick="pdfViewer('${certificate.path}','${certificate.name}','#certificate_${index+1}');">
+                <span class="h6 ">${certificate.name}</span>
+            </li>`;
+        }
+    });
+
+    return result;
 }
 

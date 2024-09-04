@@ -3,91 +3,109 @@
       {
         "path": "../Certificates/NathanielAniban-AMAES - Free Jav-certificate.pdf",
         "name": "Completion of Partner: JavaScript Essentials 1 (JSE)",
-        "type": "Certificate"
+        "type": "Certificate",
+        "focusOn":"Programming"
       },
       {
         "path": "../Certificates/NathanielAniban-AMAES - Free Pyt-certificate.pdf",
         "name": "Completion of Partner: PCAP - Programming Essentials in Python",
-        "type": "Certificate"
+        "type": "Certificate",
+        "focusOn":"Programming"
       },
       {
         "path": "../Certificates/NathanielAniban-UGRD-ITE6101A-21-certificate.pdf",
         "name": "Completion of Entrepreneurship",
-        "type": "Certificate"
+        "type": "Certificate",
+        "focusOn":"Others"
       },
       {
         "path": "../Certificates/NathanielAniban-UnderGrad-CPE635-certificate.pdf",
         "name": "Completion of Network Security",
-        "type": "Certificate"
+        "type": "Certificate",
+        "focusOn":"CyberSecurity"
       },
       {
         "path": "../Certificates/NathanielAniban-UnderGrad-CS6301-certificate.pdf",
         "name": "Completion of Emerging Technologies Workshop - Model Driven Programmability",
-        "type": "Certificate"
+        "type": "Certificate",
+        "focusOn":"CyberSecurity"
       },
       {
         "path": "../Certificates/NathanielAniban-UnderGrad-IT6200-certificate.pdf",
         "name": "Completion of CCNAv7: Introduction to Networks",
-        "type": "Certificate"
+        "type": "Certificate",
+        "focusOn":"Networking"
       },
       {
         "path": "../Certificates/NathanielAniban-UnderGrad-IT6201-certificate.pdf",
         "name": "Completion of CCNAv7: Switching, Routing, and Wireless Essentials",
-        "type": "Certificate"
+        "type": "Certificate",
+        "focusOn":"Networking"
       },
       {
         "path": "../Certificates/NathanielAniban-UnderGrad-ITE620-certificate.pdf",
         "name": "Completion of CCNAv7: Enterprise Networking, Security, and Automation",
-        "type": "Certificate"
+        "type": "Certificate",
+        "focusOn":"CyberSecurity"
       },
       {
         "path": "../Certificates/NathanielAniban-UnderGrad-IT6300-certificate (1).pdf",
         "name": "Completion of Cybersecurity Essentials",
-        "type": "Certificate"
+        "type": "Certificate",
+        "focusOn":"CyberSecurity"
       },
       {
         "path": "../Certificates/NathanielAniban-UnderGrad-IT6301-certificate (2).pdf",
         "name": "Completion of DevNet Associate",
-        "type": "Certificate"
+        "type": "Certificate",
+        "focusOn":"Networking"
       },
       {
         "path": "../Certificates/NathanielAniban-UnderGrad-IT6304-certificate (1).pdf",
         "name": "Completion of Partner: CPA - Programming Essentials in C++",
-        "type": "Certificate"
+        "type": "Certificate",
+        "focusOn":"Programming"
       },
       {
         "path": "../Certificates/NathanielAniban-UnderGrad-ITE620-certificate (1).pdf",
         "name": "Completion of Partner: CPP - Advanced Programming in C++",
-        "type": "Certificate"
+        "type": "Certificate",
+        "focusOn":"Programming"
       },
       {
         "path": "../Certificates/Alibaba-Certificate.pdf",
         "name": "Generative AI - Exploring the World of AI Creativity.",
-        "type": "Certificate"
+        "type": "Certificate",
+        "focusOn":"Automation"
       },
       {
         "path": "../Certificates/AWS-Certificate.pdf",
         "name": "AI Prompt Engineering Text to Image Competition",
-        "type": "Certificate"
+        "type": "Certificate",
+        "focusOn":"Automation"
       },
       {
         "path": "../Certificates/Certificate of Participation.pdf",
         "name": "AMA Education System Research Congress 2023",
-        "type": "Certificate"
+        "type": "Certificate",
+        "focusOn":"Others"
       },
       {
         "path": "../Certificates/Nathaniel, Aniban Villa-AI.pdf",
         "name": "Introduction to Artificial Intelligence",
-        "type": "Certificate"
+        "type": "Certificate",
+        "focusOn":"Automation"
       },
       {
         "path": "../Certificates/Nathaniel, Aniban Villa-Blockchain.pdf",
         "name": "Introduction to Blockchain",
-        "type": "Certificate"
+        "type": "Certificate",
+        "focusOn":"Others"
       }, {
         "path": "../Certificates/Nathaniel, Aniban Villa-Cybersecurity.pdf",
         "name": "Introduction to Cybersecurity",
-        "type": "Certificate"
+        "type": "Certificate",
+        "focusOn":"CyberSecurity"
       }
     ]
   }
