@@ -59,6 +59,35 @@
         "path": "../Certificates/NathanielAniban-UnderGrad-ITE620-certificate (1).pdf",
         "name": "Completion of Partner: CPP - Advanced Programming in C++",
         "type": "Certificate"
+      },
+      {
+        "path": "../Certificates/Alibaba-Certificate.pdf",
+        "name": "Generative AI - Exploring the World of AI Creativity.",
+        "type": "Certificate"
+      },
+      {
+        "path": "../Certificates/AWS-Certificate.pdf",
+        "name": "AI Prompt Engineering Text to Image Competition",
+        "type": "Certificate"
+      },
+      {
+        "path": "../Certificates/Certificate of Participation.pdf",
+        "name": "AMA Education System Research Congress 2023",
+        "type": "Certificate"
+      },
+      {
+        "path": "../Certificates/Nathaniel, Aniban Villa-AI.pdf",
+        "name": "Introduction to Artificial Intelligence",
+        "type": "Certificate"
+      },
+      {
+        "path": "../Certificates/Nathaniel, Aniban Villa-Blockchain.pdf",
+        "name": "Introduction to Blockchain",
+        "type": "Certificate"
+      }, {
+        "path": "../Certificates/Nathaniel, Aniban Villa-Cybersecurity.pdf",
+        "name": "Introduction to Cybersecurity",
+        "type": "Certificate"
       }
     ]
   }

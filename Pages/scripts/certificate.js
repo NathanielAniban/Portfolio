@@ -5,6 +5,8 @@ $(document).ready(function() {
         var Selector = $('#Selector');
         var list = $('#list-group');
         var getlist = '';
+        var createNewList = '';
+
         $.each(data.certificates, function(index, certificate) {
             // Append each certificate to the list
 
@@ -13,15 +15,27 @@ $(document).ready(function() {
                     ${certificate.name}
                 </option>`
             );
+            
 
             getlist +=
-                `<li class="list-group-item border btn btn-light border-dark" id="certificate_${index+1}" 
-                onclick="pdfViewer('${certificate.path}','${certificate.name}','#certificate_${index+1}');">
-                    ${certificate.name}
-                </li>`;
+            `<li class="list-group-item border btn btn-light border-secondary mb-1 mx-1" title="${certificate.name}" id="certificate_${index+1}" 
+            onclick="pdfViewer('${certificate.path}','${certificate.name}','#certificate_${index+1}');">
+                ${certificate.name}
+            </li>`;
+
+            if(index % 2){
+                createNewList +=     `<ul class="list-group list-group-horizontal">
+                                    ${getlist}
+                                    </ul>`;
+                getlist = '';
+            }
+            
+         
+            
+
         });
 
-        list.append(getlist);
+        list.append(createNewList);
 
     }).fail(function(jqXHR, textStatus, errorThrown) {
         console.error('Error loading JSON data: ' + textStatus, errorThrown);
