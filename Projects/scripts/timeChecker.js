@@ -37,7 +37,8 @@ const submit = () => {
 
     const totalHoursOfAbsents = !isExcluded ? (weekdaysAbsent * 8) + (saturdayAbsent * 4) : weekdaysAbsent * 8;
     const totalMinutesOfLate = !isExcluded ? weekDaysLate + saturdayLate : weekDaysLate;
-    const minutesToFloat = totalMinutesOfLate / 60;
+
+    getData('errorHandler').innerText = '';
 
    if(startDate > endDate){
     getData('errorHandler').innerText = 'Error 2: Start date must be before end date.';
@@ -51,10 +52,6 @@ const submit = () => {
 
     const Result = getData('result');
     const totalHoursToAccomplish = 486;
-    const monthNames = [
-        "January", "February", "March", "April", "May", "June", 
-        "July", "August", "September", "October", "November", "December"
-    ];
 
     const boldItalic = (data) => `<b><i>${data}</b></i>`;
 
@@ -74,7 +71,7 @@ const submit = () => {
 
     Result.innerHTML = `
         <p class="text-center" style="margin-bottom: 1rem">Results: From ${boldItalic(String(getData('startDate').value))} To ${boldItalic(String(getData('endDate').value))}</p>
-        <ul class="display-grid">
+        <ul>
             <li>
                 <span>Total Presents: </span>
                 <span>${boldItalic((!isExcluded ? daysCount - (weekdaysAbsent + saturdayAbsent) : daysCount - weekdaysAbsent) + ' day/s')}</span>

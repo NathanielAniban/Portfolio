@@ -7,8 +7,8 @@
     <link rel="stylesheet" href="styles/timeChecker.css">
 </head>
 <body>
-    <div id="myForm" class="main-form" style="margin-top: 5rem;">
-        <h1 style="text-align: center;">OJT time Checker</h1>
+    <div id="myForm" class="main-form">
+        <h1 style="text-align: center;">OJT Time Checker</h1>
         <div class="display-grid">
             <div class="form-group">
                 <label for="startDate">Start:</label>
@@ -37,28 +37,25 @@
             <label for="saturdayAbsents">No. of Absents on Saturday (including Holidays):</label>
             <input type="number" min="0" value="0" name="saturdayAbsents" id="saturdayAbsents">
         </div>
-        <div class="form-group-check">
+        <div class="form-group-check" style="margin-bottom: 1rem;">
             <input type="checkbox" name="saturdayExcluded" class="form-check" id="saturdayExcluded">
             <label for="saturdayExcluded">Exclude Saturday</label>
         </div>
         <div class="display-grid">
-            <div class="form-group">
                 <button onclick="submit()">Submit</button>
-            </div>
-            <div class="form-group">
                 <button onclick="reset()">Reset</button>
-            </div>
         </div>
         <div class="form-group">
             <p class="text-center">Note: This is fixed to 8 hours every Weekdays and 4 hours for Saturday</p>
         </div>
-        <div class="form-group">
-            <span id="errorHandler" class="text-center" style="font-weight: bold;"></span>
-            <div class="main-form" id="result">
+            <div class="error-handler">
+                <span id="errorHandler" class="text-center"></span> 
+                <div id="result">
+                    
+                </div>
             </div>
-        </div>
     </div>
-   
 </body>
+
 </html>
 <script src="scripts/timeChecker.js"></script>
