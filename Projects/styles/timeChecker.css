@@ -13,7 +13,7 @@ body{
 }
 .display-grid{
     display: grid;
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns: 9rem 9rem;
     justify-content: center;
 }
 .form-group{
