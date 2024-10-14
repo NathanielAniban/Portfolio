@@ -7,46 +7,55 @@
     <link rel="stylesheet" href="styles/timeChecker.css">
 </head>
 <body>
-    <main id="form">
-        <h1>AMA Time Checker (OJT)</h1>
-        <div class="form-container">
-            <section>
-                <label for="Start">Start Date:</label>
-                <input type="date" id="Start" name="Start">
-            </section>
-            <section>
-                <label for="End">End Date:</label>
-                <input type="date" id="End" name="End">
-            </section>
-            <section>
-                <label for="late">Total Late (minutes):</label>
-                <input type="number" id="late" name="late" value="0" min="0">
-            </section>
-            <section>
-                <label for="absentWeekdays">Absent on Weekdays (include Holidays):</label>
-                <input type="number" id="absentWeekdays" name="absentWeekdays" value="0" min="0">
-            </section>
-            <section>
-                <label for="absentSaturday">Absent on Saturdays (include Holidays):</label>
-                <input type="number" id="absentSaturday" name="absentSaturday" value="0" min="0">
-            </section>
-            <section>
-                <label>
-                    <input type="checkbox" id="excludeSaturday" name="excludeSaturday">
-                    Exclude Saturdays
-                </label>
-            </section>
-            <section class="submit-section">
-                <input type="submit" id="submit" name="submit" value="Calculate">
-                <p class="note">Note: Working hours are fixed at 8 hours, and Saturdays at 4 hours.</p>
-                <p id="errorHandler"></p>
-            </section>
-            <section class="result-section">
-                <span id="startToEnd"></span>
-                <ul id="result"></ul>
-            </section>
+    <div id="myForm" class="main-form">
+        <h1 style="text-align: center;">OJT Time Checker</h1>
+        <div class="display-grid">
+            <div class="form-group">
+                <label for="startDate">Start:</label>
+                <input type="date" name="startDate" id="startDate">
+            </div>
+            <div class="form-group">
+                <label for="endDate">End:</label>
+                <input type="date" name="endDate" id="endDate">
+            </div>
         </div>
-    </main>
+        <div class="display-grid">
+            <div class="form-group">
+                <label for="weekDaysLate">No. of Late on Weekdays (In Minutes):</label>
+                <input type="number" min="0" value="0" name="weekDaysLate" id="weekDaysLate">
+            </div>
+            <div class="form-group">
+                <label for="saturdayLate">No. of Late on Saturday (In Minutes):</label>
+                <input type="number" min="0" value="0" name="saturdayLate" id="saturdayLate">
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="weekDaysAbsents">No. of Absents on Weekdays (including Holidays):</label>
+            <input type="number" min="0" value="0" name="weekDaysAbsents" id="weekDaysAbsents">
+        </div>
+        <div class="form-group">
+            <label for="saturdayAbsents">No. of Absents on Saturday (including Holidays):</label>
+            <input type="number" min="0" value="0" name="saturdayAbsents" id="saturdayAbsents">
+        </div>
+        <div class="form-group-check" style="margin-bottom: 1rem;">
+            <input type="checkbox" name="saturdayExcluded" class="form-check" id="saturdayExcluded">
+            <label for="saturdayExcluded">Exclude Saturday</label>
+        </div>
+        <div class="display-grid">
+                <button onclick="submit()">Submit</button>
+                <button onclick="reset()">Reset</button>
+        </div>
+        <div class="form-group">
+            <p class="text-center">Note: This is fixed to 8 hours every Weekdays and 4 hours for Saturday</p>
+        </div>
+            <div class="error-handler">
+                <span id="errorHandler" class="text-center"></span> 
+                <div id="result">
+                    
+                </div>
+            </div>
+    </div>
 </body>
+
 </html>
 <script src="scripts/timeChecker.js"></script>
