@@ -106,7 +106,7 @@ const displayResults = (hoursPresent, daysPresent, totalAbsents, hoursToAccompli
         <li class="display-flex">No. of Days Accomplished: <i><b>${daysPresent} day/s</b></i></li>
         <li class="display-flex">No. of Absents: <i><b>${totalAbsents === 0 ? "None" : totalAbsents + " day/s"}</b></i></li>
         <li class="display-flex">No. of Hours Needed to Accomplish: <i><b>${hoursToAccomplish} hour/s</b></i></li>
-        <li class="display-flex">No. of Hours Left to Accomplish: <i><b>${convertDecimalHoursToHM(totalHoursLeft.toFixed(2))} day/s</b></i></li>
+        <li class="display-flex">No. of Hours Left to Accomplish: <i><b>${convertDecimalHoursToHM(totalHoursLeft.toFixed(2))}</b></i></li>
         <li class="display-flex">No. of Days to Accomplish: <i><b>${daysNeeded} day/s</b></i></li>
         <li class="display-flex">Expected Date to Finish: <i><b>${formattedDate}</b></i></li>
     
