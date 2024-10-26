@@ -1,113 +1,117 @@
-const getData = (id) => document.getElementById(id);
+// Function to get the value of an input by its ID
+const getDataValue = (id) => document.getElementById(id).value;
+const getElementId = (id) => document.getElementById(id);
 
-const submit = () => {
-    const startDate = new Date(getData('startDate').value);
-    const endDate = new Date(getData('endDate').value);
-    const weekDaysLate = Number(getData('weekDaysLate').value);
-    const saturdayLate = Number(getData('saturdayLate').value);
-    const weekdaysAbsent = Number(getData('weekDaysAbsents').value);
-    const saturdayAbsent = Number(getData('saturdayAbsents').value);
-    const isExcluded = getData('saturdayExcluded').checked;
+const convertDecimalHoursToHM = (decimalHours) => {
+    const hours = Math.floor(decimalHours);
+    const minutes = Math.round((decimalHours - hours) * 60);
+    return `${hours} hour/s ${minutes} minute/s`;
+};
 
-    startDate.setHours(0, 0, 0, 0);
-    endDate.setHours(0, 0, 0, 0);
+// Function to calculate the number of days between two dates
+const calculateResult = () => {
+    const startDate = new Date(getDataValue('Start'));
+    const endDate = new Date(getDataValue('End'));
+    const isExcluded = document.getElementById('excludeSaturday').checked;
+    const hoursToAccomplish = getDataValue('time'); // Fixed hours
 
-    let daysCount = 0;
-    let totalHoursAccomplished = 0;
-    let currentDate = startDate;
 
-    while (currentDate < endDate) {
-        const day = currentDate.getDay();
 
-        // Skip Sunday
-        if (day === 0) {
-            currentDate.setDate(currentDate.getDate() + 1);
-            continue;
-        } 
-
-        if (day === 6 && !isExcluded) { // Saturday
-            totalHoursAccomplished += 4;
-        } else { // Weekdays (Monday to Friday)
-            totalHoursAccomplished += 8;
-        }
-
-        daysCount++;
-        currentDate.setDate(currentDate.getDate() + 1);
+    // Check if the dates are valid
+    if (isNaN(startDate) || isNaN(endDate)) {
+        displayError('Invalid date format. Please use YYYY-MM-DD.');
+        return;
     }
 
-    const totalHoursOfAbsents = !isExcluded ? (weekdaysAbsent * 8) + (saturdayAbsent * 4) : weekdaysAbsent * 8;
-    const totalMinutesOfLate = !isExcluded ? weekDaysLate + saturdayLate : weekDaysLate;
-
-    getData('errorHandler').innerText = '';
-
-   if(startDate > endDate){
-    getData('errorHandler').innerText = 'Error 2: Start date must be before end date.';
-    return;
-   }
-
-   if(getData('startDate').value == '' || getData('endDate').value == ''){
-        getData('errorHandler').innerText = 'Error: Date must not be empty.';
+    if(hoursToAccomplish <= 0){
+        displayError('Enter your work hours needed to accomplish.');
         return;
-   }
+    }
 
-    const Result = getData('result');
-    const totalHoursToAccomplish = 486;
+    let totalWorkingHours = 0;
+    let presentDaysCount = 0;
 
-    const boldItalic = (data) => `<b><i>${data}</b></i>`;
+    for (let currentDate = new Date(startDate); currentDate <= endDate; currentDate.setDate(currentDate.getDate() + 1)) {
+        const dayOfWeek = currentDate.getDay();
+        if (dayOfWeek === 0) {
+            console.log(`Skipping Sunday: ${currentDate.toDateString()}`);
+            continue; // Skip Sundays
+        } else if (dayOfWeek === 6 && isExcluded) {
+            totalWorkingHours += 4; // Half hours for Saturday
+            continue;
+        } else {
+            totalWorkingHours += 8; // Whole hours for weekdays
+            presentDaysCount++;
+        }
+    }
 
-    const incrementTime = (floatHours, integerMinutes) => {
-        const totalMinutes = (floatHours * 60) + integerMinutes;
-        const hours = Math.floor(totalMinutes / 60);
-        const minutes = Math.floor(totalMinutes % 60);
-        return `${Math.max(hours, 0)} hours, ${Math.max(minutes, 0)} minutes`;
-    };
+    const absentWeekdays = Number(getElementId('absentWeekdays').value);
+    const absentSaturdays = Number(getElementId('absentSaturday').value);
+    const lateMinutes = Number(getElementId('late').value);
 
-    const decrementTime = (floatHours, integerMinutes) => {
-        const totalMinutes = (floatHours * 60) - integerMinutes;
-        const hours = Math.floor(totalMinutes / 60);
-        const minutes = Math.floor(totalMinutes % 60);
-        return `${Math.max(hours, 0)} hours, ${Math.max(minutes, 0)} minutes`;
-    };
+    if (absentWeekdays < 0 || absentSaturdays < 0 || lateMinutes < 0) {
+        displayError('Please do not use negative numbers. Thank you :)');
+        return;
+    }
 
-    Result.innerHTML = `
-        <p class="text-center" style="margin-bottom: 1rem">Results: From ${boldItalic(String(getData('startDate').value))} To ${boldItalic(String(getData('endDate').value))}</p>
-        <ul>
-            <li>
-                <span>Total Presents: </span>
-                <span>${boldItalic((!isExcluded ? daysCount - (weekdaysAbsent + saturdayAbsent) : daysCount - weekdaysAbsent) + ' day/s')}</span>
-            </li>
-            <li>
-                <span>Total Absents: </span>
-                <span>${boldItalic((!isExcluded ? weekdaysAbsent + saturdayAbsent : weekdaysAbsent) + ' day/s')}</span>
-            </li>
-            <li>
-                <span>Number of Days Passed: </span>
-                <span>${boldItalic(daysCount + ' day/s')}</span>
-            </li>
-            <li>
-                <span>Total Lates: </span>
-                <span>${boldItalic((!isExcluded ? weekDaysLate + saturdayLate : weekDaysLate) + ' minute/s')}</span>
-            </li>
-            <li>
-                <span>Total Hours Accomplished: </span>
-                <span>${boldItalic(decrementTime(totalHoursAccomplished, totalHoursOfAbsents + totalMinutesOfLate))}</span>
-            </li>
-            <li>
-                <span>Total Hours Left: </span>
-                <span>${boldItalic(incrementTime(totalHoursToAccomplish - totalHoursAccomplished, totalHoursOfAbsents + totalMinutesOfLate))}</span>
-            </li>
-        </ul>
+    let effectiveHoursPresent = totalWorkingHours - (absentWeekdays * 8);
+    let effectiveDaysPresent = presentDaysCount - absentWeekdays;
+
+    if (!isExcluded) {
+        effectiveHoursPresent -= (absentSaturdays / 2) * 8; // Adjust for absent Saturdays
+        effectiveDaysPresent -= absentSaturdays;
+    }
+
+    effectiveHoursPresent -= (lateMinutes / 60); // Convert late minutes to hours
+    let daysNeeded = 0;
+    let finalDate = new Date();
+    for(let start = new Date(startDate), hoursNeeded = 0; hoursNeeded < hoursToAccomplish; start.setDate(start.getDate() + 1)){
+        if (start.getDay() === 0) {
+            continue; // Skip Sundays
+        } else if (start.getDay() === 6 && isExcluded) {
+            hoursNeeded += 4; // Half hours for Saturday
+            daysNeeded++;
+            continue;
+        } else {
+            hoursNeeded += 8; // Whole hours for weekdays
+            daysNeeded++;
+        }
+        finalDate = new Date(start);
+    }
+    finalDate = new Date(finalDate.setDate(finalDate.getDate() + absentWeekdays + 1));
+    if(!isExcluded){
+            finalDate = new Date(finalDate.setDate(finalDate.getDate() + (absentSaturdays / 2) + 1));
+        }
+    
+
+    const options = { year: 'numeric', month: 'short', day: 'numeric' };
+    const formattedDate = finalDate.toLocaleDateString('en-US', options);
+
+    displayResults(effectiveHoursPresent, effectiveDaysPresent, absentWeekdays + absentSaturdays, hoursToAccomplish, daysNeeded, formattedDate);
+};
+
+const displayError = (message) => {
+    const errorHandler = getElementId('errorHandler');
+    errorHandler.style.textAlign = 'center';
+    errorHandler.style.color = 'red';
+    errorHandler.innerText = message;
+};
+
+const displayResults = (hoursPresent, daysPresent, totalAbsents, hoursToAccomplish, daysNeeded, formattedDate) => {
+    const totalHoursLeft = hoursToAccomplish - hoursPresent;
+    getElementId('errorHandler').innerText = '';
+    getElementId('startToEnd').innerHTML = `Overall Results:`;
+    getElementId('result').innerHTML = `
+        <li class="display-flex">No. of Hours Accomplished: <i><b>${convertDecimalHoursToHM(hoursPresent.toFixed(2))}</b></i></li>
+        <li class="display-flex">No. of Days Accomplished: <i><b>${daysPresent} day/s</b></i></li>
+        <li class="display-flex">No. of Absents: <i><b>${totalAbsents === 0 ? "None" : totalAbsents + " day/s"}</b></i></li>
+        <li class="display-flex">No. of Hours Needed to Accomplish: <i><b>${hoursToAccomplish} hour/s</b></i></li>
+        <li class="display-flex">No. of Hours Left to Accomplish: <i><b>${convertDecimalHoursToHM(totalHoursLeft.toFixed(2))} day/s</b></i></li>
+        <li class="display-flex">No. of Days to Accomplish: <i><b>${daysNeeded} day/s</b></i></li>
+        <li class="display-flex">Expected Date to Finish: <i><b>${formattedDate}</b></i></li>
+    
     `;
 };
 
-const reset = () => {
-    getData('startDate').value = '';
-    getData('endDate').value = '';
-    getData('weekDaysLate').value = 0;
-    getData('saturdayLate').value = 0;
-    getData('weekDaysAbsents').value = 0;
-    getData('saturdayAbsents').value = 0;
-    getData('saturdayExcluded').checked = false;
-    getData('result').innerHTML = '';
-    getData('errorHandler').innerText = '';
-}
+// Add event listener to the submit button
+document.getElementById('submit').addEventListener('click', calculateResult);
